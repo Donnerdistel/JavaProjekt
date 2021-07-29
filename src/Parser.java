@@ -1,8 +1,8 @@
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.lang.reflect.Array;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.zip.GZIPInputStream;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -18,14 +18,8 @@ import org.xml.sax.helpers.DefaultHandler;
 
 public class Parser {
 
+	private int anonymousPublications = 0;
 
-    private int anonymousPublications = 0;
-    private List<Publication> publications = new ArrayList<Publication>();
-    private List<Conferences_Journals> conferences_journalsList = new ArrayList<>();
-    private List<String> confJournalsNames = new ArrayList<>();
-
-    private boolean newElementInList = false;
-	
     private class ConfigHandler extends DefaultHandler {
         
         private String Value;
@@ -40,7 +34,6 @@ public class Parser {
         private int level = 0;
         private List<PersonName> names = new ArrayList<PersonName>();
 
-
         public void setDocumentLocator(Locator locator) {
         }
 
@@ -49,11 +42,7 @@ public class Parser {
         	level++;
         	if (level == 2) {
         		key = atts.getValue("key");
-
-                // Für die Personen:
         		insidePersonRecord = key.startsWith("homepages/");
-        		ee = null;
-
                 // Für die conf/
                 insidePublicationConf = key.startsWith("conf/");
 
@@ -62,15 +51,13 @@ public class Parser {
 
                 // Für die journals/corr/
                 journalsCorr = key.startsWith("journals/corr/");
-        		return;
-        	}
+                return;
+            }
         	
         	if (rawName.equals("author") || rawName.equals("editor")) {
         		insideName = true;
         		Value = "";
         	}
-
-
         	if (rawName.equals("ee")) {
         		insideEE = true;
         		Value = "";
@@ -78,52 +65,46 @@ public class Parser {
         }
 
         public void endElement(String namespaceURI, String localName,
-                String rawName) throws SAXException {
-        	level--;
-        	
-        	if (rawName.equals("author") || rawName.equals("editor")) {
-        		insideName = false;
-        		names.add(PersonName.createName(Value));
-        		return;
-        	}
-        	if (rawName.equals("ee")) {
-        		insideEE = false;
-        		if (ee == null && Value.startsWith("https://doi.org/")) {
-        			ee = Value.substring(16);
-        		}
-        		return;
-        	}
-            
-        	if (level != 1) 
-        		return;
-        	if (names.size()==0) {
-                System.out.println(key);
-        		anonymousPublications++;
-        		return;
-        	}
+                               String rawName) throws SAXException {
+            level--;
 
-        	PersonName pn[] = names.toArray(new PersonName[names.size()]);
-        	names.clear();
-        	if (insidePersonRecord)
-        		new Person(pn);
-        	// ignore
-        	else if (journalsCorr)
-        	    return;
-        	else if (insidePublicationConf || insidePublicationJournals)
-        		new Publication(key, pn, ee);
+            if (rawName.equals("author") || rawName.equals("editor")) {
+                insideName = false;
+                names.add(PersonName.createName(Value));
+                return;
+            }
+            if (rawName.equals("ee")) {
+                insideEE = false;
+                if (ee == null && Value.startsWith("https://doi.org/")) {
+                    ee = Value.substring(16);
+                }
+                return;
+            }
+
+            if (level != 1)
+                return;
+            if (names.size()==0) {
+                anonymousPublications++;
+                return;
+            }
+
+            PersonName pn[] = names.toArray(new PersonName[names.size()]);
+            names.clear();
+            if (insidePersonRecord)
+                new Person(pn);
+                // ignore
+            else if (journalsCorr)
+                return;
+            else if (insidePublicationConf || insidePublicationJournals)
+                new Publication(key, pn, ee);
         }
 
-        // Baue den Namen zusammen
         public void characters(char[] ch, int start, int length)
                 throws SAXException {
         	if (insideName || insideEE)
              	Value += new String(ch, start, length);
         }
 
-
-
-
-        // Standard Methoden
         private void Message(String mode, SAXParseException exception) {
             System.out.println(mode + " Line: " + exception.getLineNumber()
                     + " URI: " + exception.getSystemId() + "\n" + " Message: "
@@ -169,56 +150,10 @@ public class Parser {
             System.out.println("Error in XML parser configuration: "
                     + e.getMessage());
         }
-
-
-
-        // Output:
         System.out.println(anonymousPublications + "  anonymous publications (ignored)");
         System.out.println(Publication.size() + "  publications");
         System.out.println(PersonName.size() + "  person names");
         System.out.println(Person.size() + "  persons");
-
         Person.buildPersonPublicationEdges();
-
-//        // Alle gefundenen Publikationen:
-//        for (Publication p: this.publications)
-//        {
-//
-//            //p.getContributorsIDs();
-//
-//            // Entnehme den Präfix der Publikation p
-//            int prefixIndex = p.getKey().lastIndexOf("/");
-//
-//
-//            conferences_journalsList.stream().forEach((cJ) ->
-//            {
-//                //System.out.println();
-//                if(p.getKey().substring(0, prefixIndex).equals(cJ.getSubKeys()))
-//                {
-//                    //cJ.getListContributors().addAll(Arrays.asList(p.getContributorsArray()));
-//                    Arrays.asList(p.getContributorsArray()).forEach(personName -> {
-//                        cJ.getListContributors().put(p.getKey().substring(0, prefixIndex), (Set<Person>) personName.getId());
-//                        System.out.println(personName.getId());
-//
-//                    });
-//                    newElementInList = true;
-//                    return;
-//                }
-//            });
-//
-//            if (!newElementInList)
-//            {
-//                conferences_journalsList.add(new Conferences_Journals(p));
-//            }
-//
-//            newElementInList = false;
-//
-//        }
-//
-//        //System.out.println(conferences_journalsList.size());
-//        for (Conferences_Journals cjObject: conferences_journalsList)
-//        {
-//            System.out.println(cjObject);
-//        }
     }
 }

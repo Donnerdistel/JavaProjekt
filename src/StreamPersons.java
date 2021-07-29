@@ -1,5 +1,6 @@
 import java.util.*;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class StreamPersons {
 
@@ -12,7 +13,6 @@ public class StreamPersons {
     static public Map<String,Set<Person>> getStreamMap() {
         return StreamMap;
     }
-
 
     StreamPersons() {
         StreamMap = new TreeMap<String,Set<Person>>();
@@ -38,6 +38,13 @@ public class StreamPersons {
                 .filter(e -> e.getValue().size() >= 1000)
                 .collect(Collectors.toMap(e -> e.getKey(), e -> e.getValue()));
 
+        // fill streams with StreamMap
+        StreamMap
+                .entrySet()
+                .stream()
+                .forEach(
+                        e -> new Strm(e.getKey(), e.getValue())
+                );
 
 
         print_Stream_maps();
@@ -56,11 +63,11 @@ public class StreamPersons {
     // Main
     public static void main(String[] args) {
         System.setProperty("entityExpansionLimit", "2500000");
-        if (args.length < 0) {  // Need to be changed to 1
+        if (args.length < 1) {  // Need to be changed to 1
             System.out.println("Usage: java Parser [input]");
             System.exit(0);
         }
-        new Parser("dblp_test.xml");
+        new Parser(args[0]);
         new StreamPersons();
     }
 }
