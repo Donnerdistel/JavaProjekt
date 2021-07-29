@@ -97,6 +97,7 @@ public class Parser {
         	if (level != 1) 
         		return;
         	if (names.size()==0) {
+                System.out.println(key);
         		anonymousPublications++;
         		return;
         	}

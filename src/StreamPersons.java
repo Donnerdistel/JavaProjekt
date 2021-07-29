@@ -3,7 +3,16 @@ import java.util.stream.Collectors;
 
 public class StreamPersons {
 
-    private Map<String,Set<Person>> StreamMap;      // for each stream number of persons
+    static private Map<String,Set<Person>> StreamMap;      // for each stream number of persons
+
+    static {
+        StreamMap = new HashMap<String,Set<Person>>();
+    }
+
+    static public Map<String,Set<Person>> getStreamMap() {
+        return StreamMap;
+    }
+
 
     StreamPersons() {
         StreamMap = new TreeMap<String,Set<Person>>();
@@ -23,13 +32,12 @@ public class StreamPersons {
                 );
 
         // ignore streams with less than 1000 persons
-        /*
         StreamMap = StreamMap
                 .entrySet()
                 .stream()
                 .filter(e -> e.getValue().size() >= 1000)
                 .collect(Collectors.toMap(e -> e.getKey(), e -> e.getValue()));
-        */
+
 
 
         print_Stream_maps();
@@ -52,7 +60,7 @@ public class StreamPersons {
             System.out.println("Usage: java Parser [input]");
             System.exit(0);
         }
-        new Parser("dblp.xml.gz");
+        new Parser("dblp_test.xml");
         new StreamPersons();
     }
 }
