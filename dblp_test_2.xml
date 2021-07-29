@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE dblp SYSTEM "dblp.dtd">
+<dblp>
+<inproceedings mdate="2017-05-24" key="conf/romoco/Siegwart13">
+<author>Roland Siegwart</author>
+<title>Design and navigation of wheeled, running, swimming and flying robots.</title>
+<pages>98</pages>
+<year>2013</year>
+<booktitle>RoMoCo</booktitle>
+<ee>https://doi.org/10.1109/RoMoCo.2013.6614591</ee>
+<crossref>conf/romoco/2013</crossref>
+<url>db/conf/romoco/romoco2013.html#Siegwart13</url>
+</inproceedings>
+
+<inproceedings mdate="2017-05-24" key="conf/romoco/LesewedK05">
+<author>Ali A. Lesewed</author>
+<title>Calculation of robot parameters based on neural nets.</title>
+<pages>117-122</pages>
+<year>2005</year>
+<booktitle>RoMoCo</booktitle>
+<ee>https://doi.org/10.1109/ROMOCO.2005.201411</ee>
+<crossref>conf/romoco/2005</crossref>
+<url>db/conf/romoco/romoco2005.html#LesewedK05</url>
+</inproceedings>
+
+<inproceedings mdate="2020-12-29" key="conf/romoco/AlessandrettiA17">
+<author orcid="0000-0002-1861-8525">Andrea Alessandretti</author>
+<title>A planar path-following model predictive controller for fixed-wing Unmanned Aerial Vehicles.</title>
+<pages>59-64</pages>
+<year>2017</year>
+<booktitle>RoMoCo</booktitle>
+<ee>https://doi.org/10.1109/RoMoCo.2017.8003893</ee>
+<crossref>conf/romoco/2017</crossref>
+<url>db/conf/romoco/romoco2017.html#AlessandrettiA17</url>
+</inproceedings>
+
+<www mdate="2018-04-53" key="homepages/120/5219">
+<author>Ali A. Lesewed</author>
+<title>Home Page</title>
+</www>
+
+<www mdate="2018-03-13" key="homepages/169/5129">
+<author>Roland Siegwart</author>
+<title>Home Page</title>
+</www>
+
+<www mdate="2018-03-13" key="homepages/147/5118">
+<author>Andrea Alessandretti</author>
+<title>Home Page</title>
+</www>
+
+</dblp>

@@ -64,36 +64,37 @@ public class CoauthorGraph {
             System.exit(0);
         }
         new Parser(args[0]);
+        new StreamPersons();
 
         CoauthorGraph cg = new CoauthorGraph();
         /*
          * Coauthors of one person
          */
-        Person bw = PersonName.createName("Benjamin Weyers").getId();
-        System.out.println("#coauthors(Benjamin Weyers)=" + cg.getNumberOfCoauthors(bw));
-        /*
-        for (Person ca: cg.getCouthors(bw)) {
-                System.out.print(ca.getPrimaryName().getName() + " / ");
-        }
-        */
-
-        Map<Person,Long> s = bw.publications().flatMap(Publication::names).
-                map(PersonName::getId).
-                collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
-        s.remove(bw);
-        for (Map.Entry<Person, Long> e: s.entrySet()) {
-            System.out.println(e.getKey().getPrimaryName().getName() + " (" + e.getValue() + ")");
-        }
-
-        System.out.println("\nbuild complete coauthor graph");
-        System.out.println(cg.getNumberOfEdges() + "  edges");
-
-        Components co = new Components(cg);
-        co.statistics(System.out);
-        Person hf = PersonName.createName("Henning Fernau").getId();
-        System.out.println("Benjamin Weyers  and  Henning Fernau  " +
-                (co.areConnected(bw, hf) ? "are " : "are NOT ") +
-                "connected in the dblp coauthor graph");
+//        Person bw = PersonName.createName("Benjamin Weyers").getId();
+//        System.out.println("#coauthors(Benjamin Weyers)=" + cg.getNumberOfCoauthors(bw));
+//        /*
+//        for (Person ca: cg.getCouthors(bw)) {
+//                System.out.print(ca.getPrimaryName().getName() + " / ");
+//        }
+//        */
+//
+//        Map<Person,Long> s = bw.publications().flatMap(Publication::names).
+//                map(PersonName::getId).
+//                collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
+//        s.remove(bw);
+//        for (Map.Entry<Person, Long> e: s.entrySet()) {
+//            System.out.println(e.getKey().getPrimaryName().getName() + " (" + e.getValue() + ")");
+//        }
+//
+//        System.out.println("\nbuild complete coauthor graph");
+//        System.out.println(cg.getNumberOfEdges() + "  edges");
+//
+//        Components co = new Components(cg);
+//        co.statistics(System.out);
+//        Person hf = PersonName.createName("Henning Fernau").getId();
+//        System.out.println("Benjamin Weyers  and  Henning Fernau  " +
+//                (co.areConnected(bw, hf) ? "are " : "are NOT ") +
+//                "connected in the dblp coauthor graph");
     }
 
 }

@@ -11,6 +11,44 @@
 <crossref>conf/romoco/2013</crossref>
 <url>db/conf/romoco/romoco2013.html#Siegwart13</url>
 </inproceedings>
+
+<!--Dies ist ein Test fuer journals/corr/-->
+<inproceedings mdate="2017-05-24" key="journals/corr/Siegwart13">
+<author>Roland Siegwart</author>
+<title>Design and navigation of wheeled, running, swimming and flying robots.</title>
+<pages>98</pages>
+<year>2013</year>
+<booktitle>RoMoCo</booktitle>
+<ee>https://doi.org/10.1109/RoMoCo.2013.6614591</ee>
+<crossref>conf/romoco/2013</crossref>
+<url>db/conf/romoco/romoco2013.html#Siegwart13</url>
+</inproceedings>
+
+<!--Dies ist ein Test fuer journals/something/-->
+<inproceedings mdate="2017-05-24" key="journals/something/Siegwart13">
+<author>Roland Siegwart</author>
+<title>Design and navigation of wheeled, running, swimming and flying robots.</title>
+<pages>98</pages>
+<year>2013</year>
+<booktitle>RoMoCo</booktitle>
+<ee>https://doi.org/10.1109/RoMoCo.2013.6614591</ee>
+<crossref>conf/romoco/2013</crossref>
+<url>db/conf/romoco/romoco2013.html#Siegwart13</url>
+</inproceedings>
+
+<inproceedings mdate="2017-05-24" key="journals/something/Siegwart13">
+<author>Roland Siegwart</author>
+<title>Design and navigation of wheeled, running, swimming and flying robots.</title>
+<pages>98</pages>
+<year>2013</year>
+<booktitle>RoMoCo</booktitle>
+<ee>https://doi.org/10.1109/RoMoCo.2013.6614591</ee>
+<crossref>conf/romoco/2013</crossref>
+<url>db/conf/romoco/romoco2013.html#Siegwart13</url>
+</inproceedings>
+
+
+
 <inproceedings mdate="2017-05-24" key="conf/romoco/LesewedK05">
 <author>Ali A. Lesewed</author>
 <author>Jerzy E. Kurek</author>
@@ -7277,4 +7315,11 @@
 <author>Giovanni Rovere</author>
 <title>Home Page</title>
 </www>
+
+<!--Dies ist ein Test-->
+<www mdate="2018-03-13" key="homepages/149/5119">
+<author>Roland Siegwart</author>
+<title>Home Page</title>
+</www>
+
 </dblp>
