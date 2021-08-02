@@ -35,7 +35,7 @@ public class StreamPersons {
         StreamMap = StreamMap
                 .entrySet()
                 .stream()
-                .filter(e -> e.getValue().size() >= 1000)
+                //.filter(e -> e.getValue().size() >= 30000)
                 .collect(Collectors.toMap(e -> e.getKey(), e -> e.getValue()));
 
         // fill streams with StreamMap

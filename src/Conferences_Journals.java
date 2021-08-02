@@ -15,14 +15,14 @@ public class Conferences_Journals
         subKeys = p.getKey().substring(0, prefixIndex);
 
 
-        Arrays.asList(p.getContributorsArray()).stream().forEach(personName -> {
-            //listContributors.put(subKeys, new HashSet<>());
-            if(listContributors.get(subKeys) == null){
-                listContributors.put(subKeys, p.getContributorsIDs());
-            }
-            listContributors.get(subKeys).addAll(p.getContributorsIDs());
-
-        });
+//        Arrays.asList(p.getContributorsArray()).stream().forEach(personName -> {
+//            //listContributors.put(subKeys, new HashSet<>());
+//            if(listContributors.get(subKeys) == null){
+//                listContributors.put(subKeys, p.getContributorsIDs());
+//            }
+//            listContributors.get(subKeys).addAll(p.getContributorsIDs());
+//
+//        });
     }
 
     public String getSubKeys() {
