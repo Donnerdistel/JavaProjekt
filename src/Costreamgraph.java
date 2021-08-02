@@ -4,6 +4,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicReference;
 
 public class Costreamgraph {
@@ -13,21 +14,52 @@ public class Costreamgraph {
     private Map<Strm, Strm> maxStream;
 
 
+
+
     Costreamgraph() {
         // initialize
         streamWithStreams = new ConcurrentHashMap<>();
         maxStream = new ConcurrentHashMap<>();
-        int maximum;
+
+
+        streamWithStreams = new ConcurrentHashMap<>();
+        maxStream = new ConcurrentHashMap<>();
+
+
+//        Strm.getStreams().stream().forEach(
+//                s1 -> {
+//                    streamWithStreams.put(s1, new HashSet<Strm>());
+//                    maximum = -1;
+//
+//                    Strm.getStreams().stream().forEach(
+//                            s2 -> {
+//                                if( s1 == s2 ){     // same Stream?
+//                                    return;
+//                                }
+//                                Set<Person> intersection = new HashSet<Person>(s1.names());
+//                                intersection.retainAll(s2.names());      // get intersection of s1 and s2
+//                                if((inter = intersection.size()) > 0){
+//                                    // add to inputs of s1
+//                                    streamWithStreams.get(s1).add(s2);
+//                                    if(inter > maximum){
+//                                        maximum = inter;
+//                                        maxStream.put(s1, s2);    // s1 and s2 have highest weight
+//                                    }
+//                                }
+//                            }
+//                    );
+//                }
+//        );
+
         int inter;
 
-
         Set<Strm> copyStreams = new HashSet<>(Strm.getStreams());
+
         for (Strm s1 : Strm.getStreams()){
-            System.out.println(s1);
             if (streamWithStreams.get(s1) == null) {
                 streamWithStreams.put(s1, new HashSet<Strm>());
             }
-            maximum = s1.getMaxIntersection();
+
             // remove duplicated streams
             copyStreams.remove(s1);
             for (Strm s2 : copyStreams){
@@ -41,19 +73,18 @@ public class Costreamgraph {
                     streamWithStreams.get(s1).add(s2);
                     streamWithStreams.get(s2).add(s1);
 
-                    if(inter > maximum){
-                        maximum = inter;
-                        s1.setMaxIntersection(maximum);
+                    if(inter > s1.getMaxIntersection()) {
+                        s1.setMaxIntersection(inter);
                         maxStream.put(s1, s2);    // s1 and s2 have highest weight
-
+                    }
+                    if (inter > s2.getMaxIntersection()) {
                         // same for s2
                         maxStream.put(s2, s1);    // s1 and s2 have highest weight
-                        s2.setMaxIntersection(maximum);
+                        s2.setMaxIntersection(inter);
                     }
+
                 }
             }
-
-
         }
 
         toTxt();

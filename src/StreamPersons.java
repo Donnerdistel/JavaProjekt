@@ -17,7 +17,8 @@ public class StreamPersons {
     StreamPersons() {
         StreamMap = new TreeMap<String,Set<Person>>();
         Publication.getPublications()
-                .stream()
+                //.stream()
+                .parallelStream()
                 .forEach(
                         e -> {
                             int prefixIndex = e.getKey().lastIndexOf("/");
@@ -34,14 +35,16 @@ public class StreamPersons {
         // ignore streams with less than 1000 persons
         StreamMap = StreamMap
                 .entrySet()
-                .stream()
-                //.filter(e -> e.getValue().size() >= 30000)
+                //.stream()
+                .parallelStream()
+                .filter(e -> e.getValue().size() >= 1000)
                 .collect(Collectors.toMap(e -> e.getKey(), e -> e.getValue()));
 
         // fill streams with StreamMap
         StreamMap
                 .entrySet()
-                .stream()
+                //.stream()
+                .parallelStream()
                 .forEach(
                         e -> new Strm(e.getKey(), e.getValue())
                 );
@@ -54,7 +57,8 @@ public class StreamPersons {
     void print_Stream_maps() {
         StreamMap
                 .entrySet()
-                .stream()
+                //.stream()
+                .parallelStream()
                 .forEach(
                         e -> System.out.println(e.getKey() + " "
                                 + "(" + e.getValue().size() + ")"));
