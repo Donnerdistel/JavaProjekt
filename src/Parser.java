@@ -15,6 +15,12 @@ import org.xml.sax.SAXException;
 import org.xml.sax.SAXParseException;
 import org.xml.sax.helpers.DefaultHandler;
 
+/*
+Name	                Matrikelnummer	    E-Mail
+Sebastian Britner	    1485271	            s4sebrit@uni-trier.de
+Jens Hartmann	        1470700	            s4jehart@uni-trier.de
+Jan Niclas Ruppenthal	1481198	            s4jsrupp@uni-trier.de
+ */
 
 public class Parser {
 

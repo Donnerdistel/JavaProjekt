@@ -1,6 +1,18 @@
 import java.util.*;
 import java.util.stream.Collectors;
 
+/*
+Name	                Matrikelnummer	    E-Mail
+Sebastian Britner	    1485271	            s4sebrit@uni-trier.de
+Jens Hartmann	        1470700	            s4jehart@uni-trier.de
+Jan Niclas Ruppenthal	1481198	            s4jsrupp@uni-trier.de
+ */
+
+/*
+This class creates every available stream.
+First, we put every person in the same key.
+Then we create all streams.
+ */
 public class StreamPersons {
 
     static private Map<String,Set<Person>> StreamMap;      // stream with set of persons
@@ -46,7 +58,7 @@ public class StreamPersons {
                 );
 
 
-        print_Stream_maps();
+        //print_Stream_maps();
     }
 
     void print_Stream_maps() {
@@ -56,16 +68,5 @@ public class StreamPersons {
                 .forEach(
                         e -> System.out.println(e.getKey() + " "
                                 + "(" + e.getValue().size() + ")"));
-    }
-
-
-    public static void main(String[] args) {
-        System.setProperty("entityExpansionLimit", "2500000");
-        if (args.length < 1) {
-            System.out.println("Usage: java Parser [input]");
-            System.exit(0);
-        }
-        new Parser(args[0]);
-        new StreamPersons();
     }
 }

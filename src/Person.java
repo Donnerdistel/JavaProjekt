@@ -5,6 +5,13 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Stream;
 
+/*
+Name	                Matrikelnummer	    E-Mail
+Sebastian Britner	    1485271	            s4sebrit@uni-trier.de
+Jens Hartmann	        1470700	            s4jehart@uni-trier.de
+Jan Niclas Ruppenthal	1481198	            s4jsrupp@uni-trier.de
+ */
+
 public class Person {
 	static Set<Person> persons;
 	

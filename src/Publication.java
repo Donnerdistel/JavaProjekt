@@ -6,6 +6,13 @@ import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+/*
+Name	                Matrikelnummer	    E-Mail
+Sebastian Britner	    1485271	            s4sebrit@uni-trier.de
+Jens Hartmann	        1470700	            s4jehart@uni-trier.de
+Jan Niclas Ruppenthal	1481198	            s4jsrupp@uni-trier.de
+ */
+
 public class Publication {
 	static private Set<Publication> publications;
 	

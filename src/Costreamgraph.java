@@ -6,6 +6,16 @@ import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicReference;
 
+/*
+Name	                Matrikelnummer	    E-Mail
+Sebastian Britner	    1485271	            s4sebrit@uni-trier.de
+Jens Hartmann	        1470700	            s4jehart@uni-trier.de
+Jan Niclas Ruppenthal	1481198	            s4jsrupp@uni-trier.de
+ */
+
+/*
+This class builds the Costreamgraph and calculates the intersection between two sets of persons
+ */
 public class Costreamgraph {
 
     private Map<Strm, Set<Strm>> streamWithStreams;
@@ -54,6 +64,8 @@ public class Costreamgraph {
             }
         }
 
+        System.out.println("\nbuild complete costream graph");
+
         toTxt();
     }
 
@@ -95,7 +107,6 @@ public class Costreamgraph {
         new Parser(args[0]);
         new StreamPersons();
 
-        System.out.println("\nbuild complete costream graph");
         Costreamgraph csg = new Costreamgraph();
     }
 

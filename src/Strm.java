@@ -1,6 +1,18 @@
 import java.util.HashSet;
 import java.util.Set;
 
+/*
+Name	                Matrikelnummer	    E-Mail
+Sebastian Britner	    1485271	            s4sebrit@uni-trier.de
+Jens Hartmann	        1470700	            s4jehart@uni-trier.de
+Jan Niclas Ruppenthal	1481198	            s4jsrupp@uni-trier.de
+ */
+
+/*
+This class is for every Stream in the xml file
+Every object contains the key, the set of contributors and the size of that set.
+Furthermore the variable maxIntersection contains the maximum size of the intersection with another stream.
+ */
 public class Strm {
     static private Set<Strm> streams;
 
