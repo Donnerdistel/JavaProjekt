@@ -44,6 +44,7 @@ public class Publication {
 				.map(PersonName::getId)
 				.collect(Collectors.toSet());
 
+		// Test
 		//System.out.println(contributorsIDs.toString());
 		//contributorsIDs.forEach(p -> System.out.println(p.getPrimaryName().getName()));
 		return contributorsIDs;

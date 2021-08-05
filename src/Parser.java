@@ -43,13 +43,13 @@ public class Parser {
         	if (level == 2) {
         		key = atts.getValue("key");
         		insidePersonRecord = key.startsWith("homepages/");
-                // Für die conf/
+                // for conf/
                 insidePublicationConf = key.startsWith("conf/");
 
-                // Für die journals/
+                // for journals/
                 insidePublicationJournals = key.startsWith("journals/");
 
-                // Für die journals/corr/
+                // for journals/corr/
                 journalsCorr = key.startsWith("journals/corr/");
                 return;
             }
